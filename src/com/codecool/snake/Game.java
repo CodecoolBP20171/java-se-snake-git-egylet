@@ -17,9 +17,13 @@ public class Game extends Pane {
     public Game() {
         snakeHead = new SnakeHead(this, 500, 500);
 
-        //new NotSoSimpleEnemy(this, snakeHead);
+        new NotSoSimpleEnemy(this, snakeHead);
+        new NotSoSimpleEnemy(this, snakeHead);
+        new NotSoSimpleEnemy(this, snakeHead);
+        new NotSoSimpleEnemy(this, snakeHead);
+        new NotSoSimpleEnemy(this, snakeHead);
 
-        new GhostEnemy(this);
+        /*new GhostEnemy(this);
         new GhostEnemy(this);
         new GhostEnemy(this);
         new GhostEnemy(this);
@@ -37,7 +41,7 @@ public class Game extends Pane {
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
-        new SimplePowerup(this);
+        new SimplePowerup(this);*/
     }
 
     public void start() {

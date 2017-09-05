@@ -56,14 +56,17 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
     }
 
     public void followTheSnakeHead(){
-        double speed = 1;
-        double direction = Math.atan2(snakeHead.getSnakeHeadY(), snakeHead.getSnakeHeadX());
-        //System.out.println(direction);
-        //heading = new Point2D(speed * (Math.sin(snakeHead.getSnakeHeadX()) - getX()), -speed*(Math.cos(snakeHead.getSnakeHeadY()) - getY()));
-        heading = Utils.directionToVector(direction, speed);
-        setX(getX() + heading.getX());
-        setY(getY() + heading.getY());
-        System.out.println("Ez: " + heading);
+        double speed = 0.008;
+
+        double deltaX = snakeHead.getSnakeHeadX() - getX();
+        double deltaY = snakeHead.getSnakeHeadY() - getY();
+        double distance = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
+        System.out.println(distance);
+        if (distance <= 200) {
+            setX(getX() + (deltaX * speed));
+            setY(getY() + (deltaY * speed));
+        }
+
     }
 }
 
