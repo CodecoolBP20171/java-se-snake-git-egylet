@@ -4,6 +4,7 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
+import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
@@ -30,5 +31,10 @@ public class SimplePowerup extends GameEntity implements Interactable {
     @Override
     public String getMessage() {
         return "Got power-up :)";
+    }
+
+    @Override
+    public double getDir(){
+        return 0;
     }
 }
