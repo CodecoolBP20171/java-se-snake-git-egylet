@@ -5,9 +5,8 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
-import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.enemies.*;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import com.sun.javafx.geom.Vec3d;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
@@ -67,7 +66,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
             if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
                 // TODO
                 // Add all enemies
-                if (entity instanceof SimpleEnemy) {
+                if (entity instanceof SimpleEnemy || entity instanceof GhostEnemy || entity instanceof FasterEnemy) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());
