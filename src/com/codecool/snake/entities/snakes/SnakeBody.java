@@ -4,6 +4,7 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.sun.javafx.geom.Vec2d;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
@@ -30,6 +31,8 @@ public class SnakeBody extends GameEntity implements Animatable {
         double yc = parent.getY();
         setX(xc);
         setY(yc);
+
+        System.out.println("Body " +  xc + " " + yc);
         for (int i = 0; i < historySize; i++) {
             history.add(new Vec2d(xc, yc));
         }
@@ -42,4 +45,8 @@ public class SnakeBody extends GameEntity implements Animatable {
         history.add(new Vec2d(parent.getX(), parent.getY())); // add the parent's current position to the beginning of the history
     }
 
+    @Override
+    public double getDir(){
+        return 0;
+    }
 }
