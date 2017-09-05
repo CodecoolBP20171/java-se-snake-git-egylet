@@ -17,7 +17,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
     private Point2D heading;
     private GameEntity snakehead;
 
-    public Laser(Pane pane, GameEntity snakehead) {
+    public Laser(Pane pane, SnakeHead snakehead) {
         super(pane);
         this.snakehead = snakehead;
         int speed = 20;
