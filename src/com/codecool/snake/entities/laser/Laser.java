@@ -22,8 +22,8 @@ public class Laser extends GameEntity implements Animatable, Interactable {
         this.snakehead = snakehead;
         int speed = 20;
         setImage(Globals.laser);
-        //pane.getChildren().add(this);
-        pane.getChildren().add(pane.getChildren().indexOf(snakehead), this);
+        pane.getChildren().add(this);
+        //pane.getChildren().add(pane.getChildren().indexOf(snakehead), this);
 
         //TODO
 

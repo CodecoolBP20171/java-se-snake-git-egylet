@@ -76,8 +76,9 @@ public class SnakeHead extends GameEntity implements Animatable {
         return getX();
     }
 
-    public double getSnakeHeadY(){
+    public double getSnakeHeadY() {
         return getY();
+    }
 
     public double getDir() {
         return dir;
