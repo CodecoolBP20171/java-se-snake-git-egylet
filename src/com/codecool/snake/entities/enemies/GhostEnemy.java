@@ -5,6 +5,7 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
@@ -43,6 +44,16 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
     public void apply(SnakeHead player) {
         player.changeHealth(-damage);
         destroy();
+    }
+
+    @Override
+    public void apply(Laser lase) {
+        destroy();
+    }
+
+    @Override
+    public double getDir() {
+        return 0;
     }
 
     @Override

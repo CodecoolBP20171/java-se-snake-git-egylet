@@ -13,8 +13,9 @@ import javafx.scene.layout.Pane;
 
 public class Game extends Pane {
     GameEntity snakeHead;
+
     public Game() {
-        SnakeHead snakeHead = new SnakeHead(this, 500, 500);
+        snakeHead = new SnakeHead(this, 500, 500);
 
         //new NotSoSimpleEnemy(this, snakeHead);
 
@@ -28,7 +29,6 @@ public class Game extends Pane {
         new FasterEnemy(this);
         new FasterEnemy(this);
 
-        snakeHead = new SnakeHead(this, 500, 500);
         new SimpleEnemy(this);
         new SimpleEnemy(this);
         new SimpleEnemy(this);
