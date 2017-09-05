@@ -18,29 +18,18 @@ public class Laser extends GameEntity implements Animatable, Interactable {
     private GameEntity snakehead;
 
     public Laser(Pane pane, GameEntity snakehead) {
-        super(pane);
-        this.snakehead = snakehead;
-        int speed = 20;
-        setImage(Globals.laser);
-        pane.getChildren().add(this);
-        //pane.getChildren().add(pane.getChildren().indexOf(snakehead), this);
-
-        //TODO
-
-        double direction = snakehead.getDir();
-        setRotate(direction);
-        heading = Utils.directionToVector(direction, speed);
-
-        //Random rnd = new Random();
-//        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-//        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
-        double xc = snakehead.getX() - 34;
-        double yc = snakehead.getY() - 115;
-        setX(xc);
-        setY(yc);
-        System.out.println("Laser " +  xc + " " + yc);
-
-
+            super(pane);
+            this.snakehead = snakehead;
+            int speed = 20;
+            setImage(Globals.laser);
+            pane.getChildren().add(this);
+            double direction = snakehead.getDir();
+            setRotate(direction);
+            heading = Utils.directionToVector(direction, speed);
+            double xc = snakehead.getX() - 34;
+            double yc = snakehead.getY() - 115;
+            setX(xc);
+            setY(yc);
     }
 
     @Override

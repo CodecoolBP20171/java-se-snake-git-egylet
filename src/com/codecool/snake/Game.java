@@ -11,11 +11,13 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
+import java.util.Timer;
+
 public class Game extends Pane {
     GameEntity snakeHead;
-
     public Game() {
         snakeHead = new SnakeHead(this, 500, 500);
+
 
         //new NotSoSimpleEnemy(this, snakeHead);
 
@@ -46,7 +48,12 @@ public class Game extends Pane {
             switch (event.getCode()) {
                 case LEFT:  Globals.leftKeyDown  = true; break;
                 case RIGHT: Globals.rightKeyDown  = true; break;
-                case SPACE: Globals.addGameObject(new Laser(this, snakeHead));
+                case SPACE:
+                    if (!Globals.spaceDown) {
+                        Globals.addGameObject(new Laser(this, snakeHead));
+                        Globals.spaceDown = true;
+                    }
+                    break;
             }
         });
 
@@ -54,6 +61,7 @@ public class Game extends Pane {
             switch (event.getCode()) {
                 case LEFT:  Globals.leftKeyDown  = false; break;
                 case RIGHT: Globals.rightKeyDown  = false; break;
+                case SPACE: Globals.spaceDown = false; break;
             }
         });
         Globals.gameLoop = new GameLoop();
