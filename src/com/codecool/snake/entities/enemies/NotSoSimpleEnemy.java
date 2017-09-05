@@ -11,29 +11,26 @@ import javafx.scene.layout.Pane;
 
 import java.util.Random;
 
-// a simple enemy TODO make better ones.
-public class SimpleEnemy extends GameEntity implements Animatable, Interactable {
+public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interactable {
 
     private Point2D heading;
     private static final int damage = 10;
     private Random rnd = new Random();
 
-    public SimpleEnemy(Pane pane) {
+    public NotSoSimpleEnemy(Pane pane) {
         super(pane);
 
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
-        setNewHeading();
+        followTheSnakeHead();
 
     }
 
     @Override
     public void step() {
-        if (isOutOfBounds()) {
-            setNewHeading();
-        }
+        followTheSnakeHead();
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
     }
@@ -49,8 +46,8 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         return "10 damage";
     }
 
-    public Point2D setNewHeading(){
-        int speed = 1;
+    public Point2D followTheSnakeHead(){
+        double speed = 0.8;
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
         heading = Utils.directionToVector(direction, speed);
@@ -58,3 +55,4 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         return heading;
     }
 }
+
