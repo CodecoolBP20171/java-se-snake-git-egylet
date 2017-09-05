@@ -5,46 +5,37 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
-import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
 
-public class SimpleEnemy extends GameEntity implements Animatable, Interactable {
+public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interactable {
 
     private Point2D heading;
     private static final int damage = 10;
     private Random rnd = new Random();
+    private SnakeHead snakeHead;
 
-    public SimpleEnemy(Pane pane) {
+    public NotSoSimpleEnemy(Pane pane, SnakeHead snakeHead) {
         super(pane);
-
+        this.snakeHead = snakeHead;
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
-        setNewHeading();
 
     }
 
     @Override
     public void step() {
-        if (isOutOfBounds()) {
-            setNewHeading();
-        }
-        setX(getX() + heading.getX());
-        setY(getY() + heading.getY());
-    }
-
-    public void apply(SnakeHead player) {
-        player.changeHealth(-damage);
-        destroy();
+        followTheSnakeHead();
     }
 
     @Override
-    public void apply(Laser laser) {
+    public void apply(SnakeHead player) {
+        player.changeHealth(-damage);
         destroy();
     }
 
@@ -53,17 +44,15 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         return "10 damage";
     }
 
-    public Point2D setNewHeading(){
-        int speed = 1;
-        double direction = rnd.nextDouble() * 360;
-        System.out.println("Simple: " + direction);
-        setRotate(direction);
+    public void followTheSnakeHead(){
+        double speed = 1;
+        double direction = Math.atan2(snakeHead.getSnakeHeadY(), snakeHead.getSnakeHeadX());
+        //System.out.println(direction);
+        //heading = new Point2D(speed * (Math.sin(snakeHead.getSnakeHeadX()) - getX()), -speed*(Math.cos(snakeHead.getSnakeHeadY()) - getY()));
         heading = Utils.directionToVector(direction, speed);
-        System.out.println(heading);
-        return heading;
-
-    @Override
-    public double getDir(){
-        return 0;
+        setX(getX() + heading.getX());
+        setY(getY() + heading.getY());
+        System.out.println("Ez: " + heading);
     }
 }
+
