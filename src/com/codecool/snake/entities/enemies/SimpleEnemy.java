@@ -52,6 +52,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
     public Point2D setNewHeading(){
         int speed = 1;
         double direction = rnd.nextDouble() * 360;
+        System.out.println("Simple: " + direction);
         setRotate(direction);
         heading = Utils.directionToVector(direction, speed);
         System.out.println(heading);
