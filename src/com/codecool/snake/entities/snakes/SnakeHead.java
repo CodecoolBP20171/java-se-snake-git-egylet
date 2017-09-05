@@ -11,9 +11,11 @@ import javafx.scene.layout.Pane;
 public class SnakeHead extends GameEntity implements Animatable {
 
     private static final float speed = 2;
-    private static final float turnRate = 2;
+    private static final float turnRate = 5;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
+    private double dir;
+
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
@@ -28,7 +30,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void step() {
-        double dir = getRotate();
+        dir = getRotate();
         if (Globals.leftKeyDown) {
             dir = dir - turnRate;
         }
@@ -76,5 +78,12 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public double getSnakeHeadY(){
         return getY();
+
+    public double getDir() {
+        return dir;
+    }
+
+    public int getHealth() {
+        return health;
     }
 }

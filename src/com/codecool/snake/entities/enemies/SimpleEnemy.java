@@ -5,13 +5,13 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
 
-// a simple enemy TODO make better ones.
 public class SimpleEnemy extends GameEntity implements Animatable, Interactable {
 
     private Point2D heading;
@@ -38,9 +38,13 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         setY(getY() + heading.getY());
     }
 
-    @Override
     public void apply(SnakeHead player) {
         player.changeHealth(-damage);
+        destroy();
+    }
+
+    @Override
+    public void apply(Laser laser) {
         destroy();
     }
 
@@ -57,5 +61,9 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         heading = Utils.directionToVector(direction, speed);
         System.out.println(heading);
         return heading;
+
+    @Override
+    public double getDir(){
+        return 0;
     }
 }

@@ -3,14 +3,16 @@ package com.codecool.snake;
 import com.codecool.snake.entities.enemies.FasterEnemy;
 import com.codecool.snake.entities.enemies.GhostEnemy;
 import com.codecool.snake.entities.enemies.NotSoSimpleEnemy;
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 public class Game extends Pane {
-
+    GameEntity snakeHead;
     public Game() {
         SnakeHead snakeHead = new SnakeHead(this, 500, 500);
 
@@ -26,6 +28,7 @@ public class Game extends Pane {
         new FasterEnemy(this);
         new FasterEnemy(this);
 
+        snakeHead = new SnakeHead(this, 500, 500);
         new SimpleEnemy(this);
         new SimpleEnemy(this);
         new SimpleEnemy(this);
@@ -43,6 +46,7 @@ public class Game extends Pane {
             switch (event.getCode()) {
                 case LEFT:  Globals.leftKeyDown  = true; break;
                 case RIGHT: Globals.rightKeyDown  = true; break;
+                case SPACE: Globals.addGameObject(new Laser(this, snakeHead));
             }
         });
 

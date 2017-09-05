@@ -1,6 +1,7 @@
 package com.codecool.snake.entities;
 
 import com.codecool.snake.Globals;
+import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -29,4 +30,6 @@ public abstract class GameEntity extends ImageView {
         }
         return false;
     }
+    public abstract double getDir();
+
 }
