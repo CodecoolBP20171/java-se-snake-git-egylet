@@ -15,21 +15,22 @@ import java.util.Random;
 public class Laser extends GameEntity implements Animatable, Interactable {
 
     private Point2D heading;
-    private GameEntity snakehead;
+    private SnakeHead snakeHead;
 
-    public Laser(Pane pane, GameEntity snakehead) {
+    public Laser(Pane pane, SnakeHead snakeHead) {
             super(pane);
-            this.snakehead = snakehead;
+            this.snakeHead = snakeHead;
             int speed = 20;
             setImage(Globals.laser);
             pane.getChildren().add(this);
-            double direction = snakehead.getDir();
+            double direction = snakeHead.getDir();
             setRotate(direction);
             heading = Utils.directionToVector(direction, speed);
-            double xc = snakehead.getX() - 34;
-            double yc = snakehead.getY() - 115;
+            double xc = snakeHead.getX() - 34;
+            double yc = snakeHead.getY() - 115;
             setX(xc);
             setY(yc);
+
     }
 
     @Override
@@ -55,7 +56,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
             if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
                 // TODO
                 // Add all enemies
-                if (entity instanceof SimpleEnemy || entity instanceof GhostEnemy || entity instanceof FasterEnemy) {
+                if (entity instanceof SimpleEnemy || entity instanceof GhostEnemy || entity instanceof FasterEnemy || entity instanceof NotSoSimpleEnemy) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());

@@ -14,25 +14,23 @@ import javafx.scene.layout.Pane;
 import java.util.Timer;
 
 public class Game extends Pane {
-    GameEntity snakeHead;
+
+    SnakeHead snakeHead = new SnakeHead(this, 500, 500);
+
     public Game() {
-        snakeHead = new SnakeHead(this, 500, 500);
 
+        new NotSoSimpleEnemy(this, snakeHead);
+        new NotSoSimpleEnemy(this, snakeHead);
+        new NotSoSimpleEnemy(this, snakeHead);
+        new NotSoSimpleEnemy(this, snakeHead);
+        new NotSoSimpleEnemy(this, snakeHead);
 
-        //new NotSoSimpleEnemy(this, snakeHead);
-
         new GhostEnemy(this);
-        new GhostEnemy(this);
-        new GhostEnemy(this);
-        new GhostEnemy(this);
+        new GhostEnemy(this);  
 
         new FasterEnemy(this);
         new FasterEnemy(this);
-        new FasterEnemy(this);
-        new FasterEnemy(this);
 
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
         new SimpleEnemy(this);
         new SimpleEnemy(this);
 
