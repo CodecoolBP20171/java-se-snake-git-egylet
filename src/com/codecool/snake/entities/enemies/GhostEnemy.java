@@ -48,6 +48,7 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
 
     @Override
     public void apply(Laser lase) {
+        Globals.score += 15;
         destroy();
     }
 

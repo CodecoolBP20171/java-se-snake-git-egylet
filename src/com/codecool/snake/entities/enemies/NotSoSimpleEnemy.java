@@ -42,6 +42,7 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
 
     @Override
     public void apply(Laser laser) {
+        Globals.score += 20;
         destroy();
     }
 

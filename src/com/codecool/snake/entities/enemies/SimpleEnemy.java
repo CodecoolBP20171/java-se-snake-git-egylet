@@ -45,6 +45,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     @Override
     public void apply(Laser laser) {
+        Globals.score += 10;
         destroy();
     }
 
