@@ -1,8 +1,10 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -29,6 +31,7 @@ public class Globals {
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
     public static GameLoop gameLoop;
+    public static Pane pane;
 
     static {
         gameObjects = new LinkedList<>();
@@ -41,7 +44,12 @@ public class Globals {
     }
 
     public static void removeGameObject(GameEntity toRemove) {
+
         oldGameObjects.add(toRemove);
+
+        if (toRemove instanceof SimplePowerup){
+            new SimplePowerup(pane);
+        }
     }
 
     public static List<GameEntity> getGameObjects() {

@@ -34,10 +34,8 @@ public class Game extends Pane {
         new SimpleEnemy(this);
         new SimpleEnemy(this);
 
-        new SimplePowerup(this);
-        new SimplePowerup(this);
-        new SimplePowerup(this);
-        new SimplePowerup(this);
+        generatePowerUp(4);
+
     }
 
     public void start() {
@@ -65,4 +63,11 @@ public class Game extends Pane {
         Globals.gameLoop = new GameLoop();
         Globals.gameLoop.start();
     }
+
+    public void generatePowerUp(int numberOfPowerUp){
+        for (int i = 0; i < numberOfPowerUp; i++){
+            new SimplePowerup(this);
+        }
+    }
+
 }
