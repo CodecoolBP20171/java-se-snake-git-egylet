@@ -6,6 +6,9 @@ import com.codecool.snake.entities.enemies.NotSoSimpleEnemy;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.laser.Laser;
+import com.codecool.snake.entities.powerups.FillHealthPowerup;
+import com.codecool.snake.entities.powerups.GoFasterPowerup;
+import com.codecool.snake.entities.powerups.MakeSnakeLongerPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
@@ -36,8 +39,15 @@ public class Game extends Pane {
 
         new SimplePowerup(this);
         new SimplePowerup(this);
-        new SimplePowerup(this);
-        new SimplePowerup(this);
+
+        new MakeSnakeLongerPowerUp(this);
+        new MakeSnakeLongerPowerUp(this);
+
+        new FillHealthPowerup(this);
+        new FillHealthPowerup(this);
+        new GoFasterPowerup(this);
+        new GoFasterPowerup(this);
+        new GoFasterPowerup(this);
     }
 
     public void start() {

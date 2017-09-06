@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
-    private static final float speed = 2;
+    private static float speed = 2;
     private static final float turnRate = 5;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
@@ -99,5 +99,13 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public int getHealth() {
         return health;
+    }
+
+    public void setHealth(int plusHealth) {
+        this.health += plusHealth;
+    }
+
+    public void setSpeed(float plusSpeed) {
+        this.speed += plusSpeed;
     }
 }
