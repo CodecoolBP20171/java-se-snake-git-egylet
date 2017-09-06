@@ -65,8 +65,8 @@ public class SnakeHead extends GameEntity implements Animatable {
             alert.setContentText("You died.\nScore: " + Globals.score);
             alert.setHeaderText(null);
             alert.show();
-            System.out.println("Game Over");
-            System.out.println("Your score is " + Globals.score);
+            //System.out.println("Game Over");
+            //System.out.println("Your score is " + Globals.score);
         }
     }
 
