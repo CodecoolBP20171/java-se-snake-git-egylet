@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.enemies;
 
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -45,7 +46,8 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     @Override
     public void apply(Laser laser) {
-        Globals.score += 10;  
+        Globals.score += 10;
+        Main.scoreHUD.setText("Score: " + Globals.score);
         setCoordinate();
     }
 

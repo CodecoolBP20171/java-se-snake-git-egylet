@@ -36,7 +36,6 @@ public class Globals {
     public static GameLoop gameLoop;
     public static int score = 0;
 
-
     static {
         gameObjects = new LinkedList<>();
         newGameObjects = new LinkedList<>();
