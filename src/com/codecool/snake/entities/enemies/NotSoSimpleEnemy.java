@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.enemies;
 
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -19,7 +20,11 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
         this.snakeHead = snakeHead;
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
+
         setEnemy(snakeHead);
+
+
+        setCoordinate();
 
     }
 
@@ -31,12 +36,14 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
     @Override
     public void apply(SnakeHead player) {
         player.changeHealth(-damage);
-        destroy();
+        setCoordinate();
     }
 
     @Override
     public void apply(Laser laser) {
-        destroy();
+        Globals.score += 20;
+        Main.scoreHUD.setText("Score: " + Globals.score);
+        setCoordinate();
     }
 
     @Override
@@ -46,7 +53,7 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
 
     @Override
     public String getMessage() {
-        return "10 damage";
+        return "20 damage";
     }
 
     public void followTheSnakeHead(){
@@ -55,7 +62,6 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
         double deltaX = snakeHead.getSnakeHeadX() - getX();
         double deltaY = snakeHead.getSnakeHeadY() - getY();
         double distance = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
-        System.out.println(distance);
         if (distance <= 200) {
             setX(getX() + (deltaX * speed));
             setY(getY() + (deltaY * speed));

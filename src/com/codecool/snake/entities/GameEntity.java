@@ -7,12 +7,13 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import java.util.Random;
 
 import java.util.Random;
 
 // The base class for every game entity.
 public abstract class GameEntity extends ImageView {
-
+    protected Random rnd = new Random();
     protected Pane pane;
     protected Point2D heading;
     protected Random rnd = new Random();
@@ -69,6 +70,7 @@ public abstract class GameEntity extends ImageView {
     }
     public abstract double getDir();
 
+  
     public void setNewHeading() {
         int speed = 1;
         double direction = rnd.nextDouble() * 360;
@@ -78,4 +80,8 @@ public abstract class GameEntity extends ImageView {
         System.out.println(heading);
     }
 
-}
+    public void setCoordinate(){
+        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+    }
+

@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.enemies;
 
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -17,7 +18,11 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
+
         setEnemy(player);
+
+        setCoordinate();
+
         setNewHeading();
 
     }
@@ -33,18 +38,31 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     public void apply(SnakeHead player) {
         player.changeHealth(-damage);
-        destroy();
+        setCoordinate();
     }
+
 
     @Override
     public void apply(Laser laser) {
-        destroy();
+        Globals.score += 10;
+        Main.scoreHUD.setText("Score: " + Globals.score);
+        setCoordinate();
     }
 
     @Override
     public String getMessage() {
         return "10 damage";
     }
+
+
+    public Point2D setNewHeading() {
+        int speed = 1;
+        double direction = rnd.nextDouble() * 360;
+        setRotate(direction);
+        heading = Utils.directionToVector(direction, speed);
+        return heading;
+    }
+
 
     @Override
     public double getDir(){
