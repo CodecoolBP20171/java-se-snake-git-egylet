@@ -9,9 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import java.util.Random;
 
-import java.util.Random;
 
-// The base class for every game entity.
 public abstract class GameEntity extends ImageView {
 
     protected int speed = 1;
