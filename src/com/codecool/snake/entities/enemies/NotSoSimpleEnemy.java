@@ -20,7 +20,12 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
         this.snakeHead = snakeHead;
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
+
+        setEnemy(snakeHead);
+
+
         setCoordinate();
+
     }
 
     @Override

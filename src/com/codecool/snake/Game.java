@@ -21,15 +21,15 @@ public class Game extends Pane {
         new NotSoSimpleEnemy(this, snakeHead);
         new NotSoSimpleEnemy(this, snakeHead);
 
-        new GhostEnemy(this);
-        new GhostEnemy(this);
+        new GhostEnemy(this, snakeHead);
+        new GhostEnemy(this, snakeHead);
 
-        new FasterEnemy(this);
-        new FasterEnemy(this);
+        new FasterEnemy(this, snakeHead);
+        new FasterEnemy(this, snakeHead);
 
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        
+        new SimpleEnemy(this, snakeHead);
+        new SimpleEnemy(this, snakeHead);
+
         generatePowerUp(4);
 
         new MakeSnakeLongerPowerUp(this);

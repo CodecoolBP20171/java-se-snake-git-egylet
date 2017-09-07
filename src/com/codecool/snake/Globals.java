@@ -1,8 +1,7 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.entities.powerups.SimplePowerup;
-import com.codecool.snake.entities.snakes.SnakeHead;
+
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
