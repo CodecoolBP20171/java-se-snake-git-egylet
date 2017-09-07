@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.snakes;
 
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -70,6 +71,7 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+        Main.healthHUD.setText("Health: " + Integer.toString(health));
     }
 
     public double getSnakeHeadX(){
@@ -86,10 +88,6 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public int getHealth() {
         return health;
-    }
-
-    public void setHealth(int plusHealth) {
-        this.health += plusHealth;
     }
 
     public void setSpeed(float plusSpeed) {
