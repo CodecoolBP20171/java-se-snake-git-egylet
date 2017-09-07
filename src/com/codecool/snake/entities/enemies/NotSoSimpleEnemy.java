@@ -62,7 +62,7 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
         double deltaX = snakeHead.getSnakeHeadX() - getX();
         double deltaY = snakeHead.getSnakeHeadY() - getY();
         double distance = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
-        System.out.println(distance);
+        //System.out.println(distance);
         if (distance <= 200) {
             setX(getX() + (deltaX * speed));
             setY(getY() + (deltaY * speed));

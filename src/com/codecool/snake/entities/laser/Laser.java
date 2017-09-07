@@ -59,7 +59,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
                 if (entity instanceof SimpleEnemy || entity instanceof GhostEnemy || entity instanceof FasterEnemy || entity instanceof NotSoSimpleEnemy) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
-                    System.out.println(interactable.getMessage());
+                    //System.out.println(interactable.getMessage());
                 }
             }
         }
