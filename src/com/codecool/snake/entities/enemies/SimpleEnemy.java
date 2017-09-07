@@ -54,16 +54,6 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         return "10 damage";
     }
 
-
-    public Point2D setNewHeading() {
-        int speed = 1;
-        double direction = rnd.nextDouble() * 360;
-        setRotate(direction);
-        heading = Utils.directionToVector(direction, speed);
-        return heading;
-    }
-
-
     @Override
     public double getDir(){
         return 0;

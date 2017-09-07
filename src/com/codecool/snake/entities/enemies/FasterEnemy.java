@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 
 
 public class FasterEnemy extends GameEntity implements Animatable, Interactable {
-    private Point2D heading;
+
     private static final int damage = 10;
 
     public FasterEnemy(Pane pane, SnakeHead player) {
@@ -21,10 +21,8 @@ public class FasterEnemy extends GameEntity implements Animatable, Interactable 
 
         setImage(Globals.fastEnemy);
         pane.getChildren().add(this);
-
+        setSpeed();
         setEnemy(player);
-        this.setNewHeading();
-
         setCoordinate();
         setNewHeading();
 
@@ -61,15 +59,8 @@ public class FasterEnemy extends GameEntity implements Animatable, Interactable 
     public String getMessage() {
         return "20 damage";
     }
-
-    public void setNewHeading(){
-        int speed = 2;
-        double direction = rnd.nextDouble() * 360;
-        setRotate(direction);
-        heading = Utils.directionToVector(direction, speed);
-        System.out.println(heading);
-
-        return heading;
-
+  
+    public void setSpeed(){
+        this.speed = 2;
     }
 }

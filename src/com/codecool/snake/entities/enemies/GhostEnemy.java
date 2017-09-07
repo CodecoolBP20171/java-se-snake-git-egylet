@@ -10,7 +10,6 @@ import javafx.scene.layout.Pane;
 
 public class GhostEnemy extends GameEntity implements Animatable, Interactable {
 
-
     private static final int damage = 10;
 
     public GhostEnemy(Pane pane, SnakeHead player) {
@@ -60,14 +59,4 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
     public String getMessage() {
         return "15 damage";
     }
-
-
-    public Point2D setNewHeading(){
-        int speed = 1;
-        double direction = rnd.nextDouble() * 360;
-        setRotate(direction);
-        heading = Utils.directionToVector(direction, speed);
-        return heading;
-    }
-
 }
