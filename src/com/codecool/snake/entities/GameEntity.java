@@ -69,14 +69,13 @@ public abstract class GameEntity extends ImageView {
     }
     public abstract double getDir();
 
-    public Point2D setNewHeading() {
+    public void setNewHeading() {
         int speed = 1;
         double direction = rnd.nextDouble() * 360;
         System.out.println("Simple: " + direction);
         setRotate(direction);
         heading = Utils.directionToVector(direction, speed);
         System.out.println(heading);
-        return heading;
     }
 
 }
