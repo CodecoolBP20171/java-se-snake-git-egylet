@@ -3,6 +3,8 @@ package com.codecool.snake.entities.snakes;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.laser.Laser;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -11,15 +13,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class SnakeBody extends GameEntity implements Animatable {
+public class SnakeBody extends GameEntity implements Animatable, Interactable {
 
     private GameEntity parent;
     private Queue<Vec2d> history = new LinkedList<>();
     private static final int historySize = 10;
+    private SnakeHead snakeHead;
 
-    public SnakeBody(Pane pane, GameEntity parent) {
+    public SnakeBody(Pane pane, GameEntity parent, SnakeHead snakeHead) {
         super(pane);
         this.parent = parent;
+        this.snakeHead = snakeHead;
         setImage(Globals.snakeBody);
 
         // place it visually below the current tail
@@ -33,6 +37,19 @@ public class SnakeBody extends GameEntity implements Animatable {
         for (int i = 0; i < historySize; i++) {
             history.add(new Vec2d(xc, yc));
         }
+    }
+
+    @Override
+    public void apply(SnakeHead snakeHead) {
+        snakeHead.changeHealth(-100);
+    }
+
+    @Override
+    public void apply(Laser laser) {}
+
+    @Override
+    public String getMessage() {
+        return null;
     }
 
     public void step() {

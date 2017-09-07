@@ -9,6 +9,9 @@ import com.codecool.snake.entities.Interactable;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
@@ -17,6 +20,8 @@ public class SnakeHead extends GameEntity implements Animatable {
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     private double dir;
+    private List<SnakeBody> bodyParts = new ArrayList<>();
+    private int timer = 0;
 
 
     public SnakeHead(Pane pane, int xc, int yc) {
@@ -46,11 +51,21 @@ public class SnakeHead extends GameEntity implements Animatable {
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
 
+
         // check if collided with an enemy or a powerup
         for (GameEntity entity : Globals.getGameObjects()) {
             if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
-                if (entity instanceof Interactable) {
+                if (entity instanceof Interactable && !(entity instanceof SnakeBody)) {
+                    System.out.println(this.getX() + "snake " + this.getY());
                     Interactable interactable = (Interactable) entity;
+                    interactable.apply(this);
+                }
+            }
+        }
+        if (timer > 180) {
+            for (SnakeBody snakeBodyPart : bodyParts.subList(2, bodyParts.size())) {
+                if (this.intersects(snakeBodyPart.getBoundsInParent())) {
+                    Interactable interactable = snakeBodyPart;
                     interactable.apply(this);
                 }
             }
@@ -65,11 +80,16 @@ public class SnakeHead extends GameEntity implements Animatable {
             alert.setHeaderText(null);
             alert.show();
         }
+        if (timer <= 180) {
+            timer++;
+            System.out.println(timer);
+        }
     }
 
     public void addPart(int numParts) {
         for (int i = 0; i < numParts; i++) {
-            SnakeBody newPart = new SnakeBody(pane, tail);
+            SnakeBody newPart = new SnakeBody(pane, tail, this);
+            bodyParts.add(newPart);
             tail = newPart;
         }
     }
