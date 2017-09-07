@@ -6,15 +6,14 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
+
 import java.util.Random;
 
-public class SimplePowerup extends GameEntity implements Interactable {
+public class GoFasterPowerup extends GameEntity implements Interactable {
 
-    private static final int scoreValue = 10;
-
-    public SimplePowerup(Pane pane) {
+    public GoFasterPowerup(Pane pane) {
         super(pane);
-        setImage(Globals.powerupBerry);
+        setImage(Globals.speedPowerup);
         pane.getChildren().add(this);
 
         Random rnd = new Random();
@@ -24,11 +23,9 @@ public class SimplePowerup extends GameEntity implements Interactable {
 
     @Override
     public void apply(SnakeHead snakeHead) {
-        snakeHead.changeScore(scoreValue);
-        snakeHead.addPart(4);
+        snakeHead.setSpeed(0.40f);
         destroy();
-        new SimplePowerup(pane);
-
+        new GoFasterPowerup(pane);
     }
 
     @Override
