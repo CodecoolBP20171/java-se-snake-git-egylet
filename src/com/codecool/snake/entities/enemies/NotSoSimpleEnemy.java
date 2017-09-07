@@ -35,6 +35,7 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
 
     @Override
     public void apply(Laser laser) {
+        Globals.score += 20;  
         setCoordinate();
     }
 
@@ -45,7 +46,7 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
 
     @Override
     public String getMessage() {
-        return "10 damage";
+        return "20 damage";
     }
 
     public void followTheSnakeHead(){

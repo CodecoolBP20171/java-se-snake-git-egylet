@@ -44,6 +44,7 @@ public class FasterEnemy extends GameEntity implements Animatable, Interactable 
     @Override
     public void apply(Laser laser) {
         setCoordinate();
+        Globals.score += 20;
     }
 
     @Override
@@ -53,7 +54,7 @@ public class FasterEnemy extends GameEntity implements Animatable, Interactable 
 
     @Override
     public String getMessage() {
-        return "10 damage";
+        return "20 damage";
     }
 
     public Point2D setNewHeading(){

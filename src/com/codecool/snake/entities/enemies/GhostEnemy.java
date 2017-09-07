@@ -47,7 +47,8 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
 
     @Override
     public void apply(Laser lase) {
-        setCoordinate();
+      Globals.score += 15;
+      setCoordinate();
     }
 
     @Override
@@ -57,7 +58,7 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
 
     @Override
     public String getMessage() {
-        return "10 damage";
+        return "15 damage";
     }
 
     public Point2D setNewHeading(){

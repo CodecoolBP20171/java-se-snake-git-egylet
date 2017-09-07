@@ -2,6 +2,9 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.*;
 import com.codecool.snake.entities.laser.Laser;
+import com.codecool.snake.entities.powerups.FillHealthPowerup;
+import com.codecool.snake.entities.powerups.GoFasterPowerup;
+import com.codecool.snake.entities.powerups.MakeSnakeLongerPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
@@ -12,7 +15,6 @@ public class Game extends Pane {
     SnakeHead snakeHead = new SnakeHead(this, 500, 500);
 
     public Game() {
-
         new NotSoSimpleEnemy(this, snakeHead);
         new NotSoSimpleEnemy(this, snakeHead);
         new NotSoSimpleEnemy(this, snakeHead);
@@ -27,9 +29,17 @@ public class Game extends Pane {
 
         new SimpleEnemy(this);
         new SimpleEnemy(this);
-
+        
         generatePowerUp(4);
 
+        new MakeSnakeLongerPowerUp(this);
+        new MakeSnakeLongerPowerUp(this);
+
+        new FillHealthPowerup(this);
+        new FillHealthPowerup(this);
+        new GoFasterPowerup(this);
+        new GoFasterPowerup(this);
+        new GoFasterPowerup(this);
     }
 
     public void start() {
