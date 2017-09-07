@@ -1,27 +1,28 @@
 package com.codecool.snake.entities.enemies;
 
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
-import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
-
-import java.util.Random;
 
 public class SimpleEnemy extends GameEntity implements Animatable, Interactable {
 
     private static final int damage = 10;
 
-    public SimpleEnemy(Pane pane) {
+    public SimpleEnemy(Pane pane, SnakeHead player) {
         super(pane);
 
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
+
+        setEnemy(player);
+
         setCoordinate();
+
         setNewHeading();
 
     }
@@ -43,7 +44,8 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     @Override
     public void apply(Laser laser) {
-        Globals.score += 10;  
+        Globals.score += 10;
+        Main.scoreHUD.setText("Score: " + Globals.score);
         setCoordinate();
     }
 
@@ -51,7 +53,6 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
     public String getMessage() {
         return "10 damage";
     }
-
 
     @Override
     public double getDir(){
