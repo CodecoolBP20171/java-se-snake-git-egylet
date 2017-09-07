@@ -4,10 +4,11 @@ import com.codecool.snake.Globals;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import java.util.Random;
 
 // The base class for every game entity.
 public abstract class GameEntity extends ImageView {
-
+    protected Random rnd = new Random();
     protected Pane pane;
 
     protected GameEntity(Pane pane) {
@@ -32,4 +33,8 @@ public abstract class GameEntity extends ImageView {
     }
     public abstract double getDir();
 
+    public void setCoordinate(){
+        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+    }
 }

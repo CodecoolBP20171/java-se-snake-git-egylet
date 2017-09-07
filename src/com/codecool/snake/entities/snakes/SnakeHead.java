@@ -49,14 +49,12 @@ public class SnakeHead extends GameEntity implements Animatable {
                 if (entity instanceof Interactable) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
-                    System.out.println(interactable.getMessage());
                 }
             }
         }
 
         // check for game over condition
         if (isOutOfBounds() || health <= 0) {
-            System.out.println("Game Over");
             Globals.gameLoop.stop();
         }
     }

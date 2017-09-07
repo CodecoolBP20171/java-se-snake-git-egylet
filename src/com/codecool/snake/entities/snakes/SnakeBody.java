@@ -31,8 +31,7 @@ public class SnakeBody extends GameEntity implements Animatable {
         double yc = parent.getY();
         setX(xc);
         setY(yc);
-
-        System.out.println("Body " +  xc + " " + yc);
+        
         for (int i = 0; i < historySize; i++) {
             history.add(new Vec2d(xc, yc));
         }

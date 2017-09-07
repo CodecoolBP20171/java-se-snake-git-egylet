@@ -31,7 +31,7 @@ public class Globals {
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
     public static GameLoop gameLoop;
-    public static Pane pane;
+
 
     static {
         gameObjects = new LinkedList<>();
@@ -47,12 +47,10 @@ public class Globals {
 
         oldGameObjects.add(toRemove);
 
-        if (toRemove instanceof SimplePowerup){
-            new SimplePowerup(pane);
-        }
     }
 
     public static List<GameEntity> getGameObjects() {
         return Collections.unmodifiableList(gameObjects);
     }
+
 }
