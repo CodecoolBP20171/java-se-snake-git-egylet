@@ -97,6 +97,12 @@ public class Game extends Pane {
     public void restart() {
         Globals.gameLoop.stop();
         for (GameEntity entity : Globals.gameObjects) {
+            if (entity instanceof SnakeBody) {
+                entity.destroy();
+            }
+        }
+        Globals.gameLoop.stop();
+        for (GameEntity entity : Globals.gameObjects) {
             if (entity instanceof SnakeBody || entity instanceof SnakeHead || entity instanceof Laser) {
                 entity.destroy();
             }

@@ -47,11 +47,6 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
     @Override
     public void apply(Laser laser) {}
 
-    @Override
-    public String getMessage() {
-        return null;
-    }
-
     public void step() {
         Vec2d pos = history.poll(); // remove the oldest item from the history
         setX(pos.x);
