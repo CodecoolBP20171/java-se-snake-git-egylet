@@ -66,7 +66,6 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
             setX(getX() + (deltaX * speed));
             setY(getY() + (deltaY * speed));
         }
-
     }
 }
 

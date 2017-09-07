@@ -6,9 +6,12 @@ import com.codecool.snake.entities.powerups.FillHealthPowerup;
 import com.codecool.snake.entities.powerups.GoFasterPowerup;
 import com.codecool.snake.entities.powerups.MakeSnakeLongerPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerup;
+import com.codecool.snake.entities.snakes.SnakeBody;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import java.util.Random;
 
 public class Game extends Pane {
 
@@ -54,8 +57,13 @@ public class Game extends Pane {
                         Globals.spaceDown = true;
                     }
                     break;
+                case R:
+                    restart();
+                    break;
             }
         });
+
+
 
         scene.setOnKeyReleased(event -> {
             switch (event.getCode()) {
@@ -68,10 +76,24 @@ public class Game extends Pane {
         Globals.gameLoop.start();
     }
 
+    public void restart(){
+        Globals.gameLoop.stop();
+        for(GameEntity entity: Globals.gameObjects) {
+            if (entity instanceof SnakeBody || entity instanceof SnakeHead || entity instanceof Laser){
+                entity.destroy();
+            }
+            Random rnd = new Random();
+            entity.setCoordinates((int) (rnd.nextDouble() * Globals.WINDOW_WIDTH),
+                                  (int) (rnd.nextDouble() * Globals.WINDOW_HEIGHT));
+        }
+        snakeHead = new SnakeHead(this, 500, 500);
+        Globals.score = 0;
+        Globals.gameLoop.start();
+    }
+
     public void generatePowerUp(int numberOfPowerUp){
         for (int i = 0; i < numberOfPowerUp; i++){
             new SimplePowerup(this);
         }
     }
-
 }

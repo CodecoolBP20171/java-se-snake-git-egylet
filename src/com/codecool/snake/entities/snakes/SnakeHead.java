@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.snakes;
 
+import com.codecool.snake.Game;
 import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
@@ -8,8 +9,10 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class SnakeHead extends GameEntity implements Animatable {
@@ -62,11 +65,9 @@ public class SnakeHead extends GameEntity implements Animatable {
             Globals.gameLoop.stop();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle(null);
-            alert.setContentText("You died.\nScore: " + Globals.score);
+            alert.setContentText("You died.\nScore: " + Globals.score +"\n Press 'R' to restart the game after OK.");
             alert.setHeaderText(null);
             alert.show();
-            //System.out.println("Game Over");
-            //System.out.println("Your score is " + Globals.score);
         }
     }
 

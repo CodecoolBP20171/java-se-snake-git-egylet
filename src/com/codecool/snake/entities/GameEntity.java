@@ -72,6 +72,10 @@ public abstract class GameEntity extends ImageView {
     }
     public abstract double getDir();
   
+    public void setCoordinates(int x, int y){
+        this.setX(x);
+        this.setY(y);
+    }
 
     public void setCoordinate(){
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
