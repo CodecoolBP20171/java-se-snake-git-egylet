@@ -27,7 +27,6 @@ public class Laser extends GameEntity implements Animatable, Interactable {
             double yc = snakeHead.getY() - 115;
             setX(xc);
             setY(yc);
-
     }
 
     @Override
@@ -35,11 +34,6 @@ public class Laser extends GameEntity implements Animatable, Interactable {
 
     @Override
     public void apply(Laser laser) {}
-
-    @Override
-    public String getMessage() {
-        return "Interacted with laser.";
-    }
 
     @Override
     public void step() {
@@ -51,8 +45,6 @@ public class Laser extends GameEntity implements Animatable, Interactable {
 
         for (GameEntity entity : Globals.getGameObjects()) {
             if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
-                // TODO
-                // Add all enemies
                 if (entity instanceof SimpleEnemy || entity instanceof GhostEnemy || entity instanceof FasterEnemy || entity instanceof NotSoSimpleEnemy) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
