@@ -10,17 +10,14 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
-import java.util.Random;
 
 public class Laser extends GameEntity implements Animatable, Interactable {
 
     private Point2D heading;
-    private SnakeHead snakeHead;
 
     public Laser(Pane pane, SnakeHead snakeHead) {
             super(pane);
-            this.snakeHead = snakeHead;
-            int speed = 20;
+            int speed = 10;
             setImage(Globals.laser);
             pane.getChildren().add(this);
             double direction = snakeHead.getDir();
@@ -59,7 +56,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
                 if (entity instanceof SimpleEnemy || entity instanceof GhostEnemy || entity instanceof FasterEnemy || entity instanceof NotSoSimpleEnemy) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
-                    System.out.println(interactable.getMessage());
+                    destroy();
                 }
             }
         }

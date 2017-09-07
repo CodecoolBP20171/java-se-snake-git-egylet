@@ -23,8 +23,7 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
 
         setImage(Globals.ghostEnemy);
         pane.getChildren().add(this);
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        setCoordinate();
         setNewHeading();
 
     }
@@ -43,13 +42,13 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
     @Override
     public void apply(SnakeHead player) {
         player.changeHealth(-damage);
-        destroy();
+        setCoordinate();
     }
 
     @Override
     public void apply(Laser lase) {
-        Globals.score += 15;
-        destroy();
+      Globals.score += 15;
+      setCoordinate();
     }
 
     @Override
@@ -59,16 +58,14 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
 
     @Override
     public String getMessage() {
-        return "10 damage";
+        return "15 damage";
     }
 
     public Point2D setNewHeading(){
         int speed = 1;
         double direction = rnd.nextDouble() * 360;
-        System.out.println("Simple: " + direction);
         setRotate(direction);
         heading = Utils.directionToVector(direction, speed);
-        System.out.println(heading);
         return heading;
     }
 }

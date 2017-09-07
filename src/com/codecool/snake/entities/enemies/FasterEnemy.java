@@ -22,10 +22,8 @@ public class FasterEnemy extends GameEntity implements Animatable, Interactable 
 
         setImage(Globals.fastEnemy);
         pane.getChildren().add(this);
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        setCoordinate();
         setNewHeading();
-
     }
 
     @Override
@@ -40,13 +38,13 @@ public class FasterEnemy extends GameEntity implements Animatable, Interactable 
     @Override
     public void apply(SnakeHead player) {
         player.changeHealth(-damage);
-        destroy();
+        setCoordinate();
     }
 
     @Override
     public void apply(Laser laser) {
+        setCoordinate();
         Globals.score += 20;
-        destroy();
     }
 
     @Override
@@ -56,16 +54,14 @@ public class FasterEnemy extends GameEntity implements Animatable, Interactable 
 
     @Override
     public String getMessage() {
-        return "10 damage";
+        return "20 damage";
     }
 
     public Point2D setNewHeading(){
         int speed = 2;
         double direction = rnd.nextDouble() * 360;
-        System.out.println("Simple: " + direction);
         setRotate(direction);
         heading = Utils.directionToVector(direction, speed);
-        System.out.println(heading);
         return heading;
     }
 }
