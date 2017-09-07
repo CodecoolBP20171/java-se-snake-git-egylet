@@ -14,9 +14,7 @@ import java.util.Random;
 
 public class SimpleEnemy extends GameEntity implements Animatable, Interactable {
 
-    private Point2D heading;
     private static final int damage = 10;
-    private Random rnd = new Random();
 
     public SimpleEnemy(Pane pane) {
         super(pane);
@@ -54,13 +52,6 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         return "10 damage";
     }
 
-    public Point2D setNewHeading() {
-        int speed = 1;
-        double direction = rnd.nextDouble() * 360;
-        setRotate(direction);
-        heading = Utils.directionToVector(direction, speed);
-        return heading;
-    }
 
     @Override
     public double getDir(){

@@ -14,9 +14,7 @@ import java.util.Random;
 
 public class GhostEnemy extends GameEntity implements Animatable, Interactable {
 
-    private Point2D heading;
     private static final int damage = 10;
-    private Random rnd = new Random();
 
     public GhostEnemy(Pane pane) {
         super(pane);
@@ -61,11 +59,4 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
         return "15 damage";
     }
 
-    public Point2D setNewHeading(){
-        int speed = 1;
-        double direction = rnd.nextDouble() * 360;
-        setRotate(direction);
-        heading = Utils.directionToVector(direction, speed);
-        return heading;
-    }
 }
