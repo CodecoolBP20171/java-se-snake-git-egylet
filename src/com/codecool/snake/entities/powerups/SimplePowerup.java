@@ -5,7 +5,6 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
