@@ -9,7 +9,4 @@ public interface Interactable {
     void apply(SnakeHead snakeHead);
 
     void apply(Laser laser);
-
-    String getMessage();
-
 }
