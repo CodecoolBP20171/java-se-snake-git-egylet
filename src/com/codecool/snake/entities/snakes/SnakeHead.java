@@ -9,14 +9,13 @@ import com.codecool.snake.entities.Interactable;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
-    private static float speed = 2;
+    private float speed;
     private static final float turnRate = 5;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
@@ -30,6 +29,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         setX(xc);
         setY(yc);
         health = 100;
+        speed = 2;
         tail = this;
         setImage(Globals.snakeHead);
         pane.getChildren().add(this);
@@ -76,11 +76,9 @@ public class SnakeHead extends GameEntity implements Animatable {
             Globals.gameLoop.stop();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle(null);
-            alert.setContentText("You died.\nScore: " + Globals.score);
+            alert.setContentText("You died.\nScore: " + Globals.score +"\n Press 'R' to restart the game after OK.");
             alert.setHeaderText(null);
             alert.show();
-            //System.out.println("Game Over");
-            //System.out.println("Your score is " + Globals.score);
         }
         if (timer <= 180) {
             timer++;

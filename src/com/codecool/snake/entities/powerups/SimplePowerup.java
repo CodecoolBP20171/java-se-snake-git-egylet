@@ -6,10 +6,8 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
-
 import java.util.Random;
 
-// a simple powerup that makes the snake grow TODO make other powerups
 public class SimplePowerup extends GameEntity implements Interactable {
 
     private static final int scoreValue = 10;
@@ -36,11 +34,6 @@ public class SimplePowerup extends GameEntity implements Interactable {
     @Override
     public void apply(Laser laser) {
         destroy();
-    }
-
-    @Override
-    public String getMessage() {
-        return "Got power-up :)";
     }
 
     @Override

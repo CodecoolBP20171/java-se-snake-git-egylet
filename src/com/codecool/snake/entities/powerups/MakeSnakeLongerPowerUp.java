@@ -5,7 +5,6 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
@@ -26,16 +25,12 @@ public class MakeSnakeLongerPowerUp extends GameEntity implements Interactable {
     public void apply(SnakeHead snakeHead) {
         snakeHead.addPart(6);
         destroy();
+        new MakeSnakeLongerPowerUp(pane);
     }
 
     @Override
     public void apply(Laser laser) {
         destroy();
-    }
-
-    @Override
-    public String getMessage() {
-        return "Got power-up :)";
     }
 
     @Override

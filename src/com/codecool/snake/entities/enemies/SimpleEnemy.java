@@ -15,16 +15,11 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     public SimpleEnemy(Pane pane, SnakeHead player) {
         super(pane);
-
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
-
         setEnemy(player);
-
         setCoordinate();
-
         setNewHeading();
-
     }
 
     @Override
@@ -47,11 +42,6 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         Globals.score += 10;
         Main.scoreHUD.setText("Score: " + Globals.score);
         setCoordinate();
-    }
-
-    @Override
-    public String getMessage() {
-        return "10 damage";
     }
 
     @Override

@@ -5,7 +5,6 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
@@ -25,9 +24,7 @@ public class FillHealthPowerup extends GameEntity implements Interactable {
     @Override
     public void apply(SnakeHead snakeHead) {
         if (snakeHead.getHealth() < 100) {
-            System.out.println(snakeHead.getHealth());
             snakeHead.changeHealth(10);
-            System.out.println(snakeHead.getHealth());
             destroy();
         }
     }
@@ -35,11 +32,6 @@ public class FillHealthPowerup extends GameEntity implements Interactable {
     @Override
     public void apply(Laser laser) {
         destroy();
-    }
-
-    @Override
-    public String getMessage() {
-        return "Got power-up :)";
     }
 
     @Override

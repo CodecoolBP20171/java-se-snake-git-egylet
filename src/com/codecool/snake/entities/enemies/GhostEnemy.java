@@ -15,16 +15,11 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
 
     public GhostEnemy(Pane pane, SnakeHead player) {
         super(pane);
-
         setImage(Globals.ghostEnemy);
         pane.getChildren().add(this);
-
         setEnemy(player);
-
         setCoordinate();
-
         setNewHeading();
-
     }
 
     @Override
@@ -54,10 +49,5 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
     @Override
     public double getDir() {
         return 0;
-    }
-
-    @Override
-    public String getMessage() {
-        return "15 damage";
     }
 }
