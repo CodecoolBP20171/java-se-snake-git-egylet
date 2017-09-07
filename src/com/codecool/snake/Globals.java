@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-// class for holding all static stuff
 public class Globals {
 
     public static final double WINDOW_WIDTH = 1000;
