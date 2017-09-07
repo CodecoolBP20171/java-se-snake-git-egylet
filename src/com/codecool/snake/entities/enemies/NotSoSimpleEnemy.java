@@ -20,12 +20,8 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
         this.snakeHead = snakeHead;
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
-
         setEnemy(snakeHead);
-
-
         setCoordinate();
-
     }
 
     @Override
@@ -51,14 +47,8 @@ public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interact
         return 0;
     }
 
-    @Override
-    public String getMessage() {
-        return "20 damage";
-    }
-
     public void followTheSnakeHead(){
         double speed = 0.008;
-
         double deltaX = snakeHead.getSnakeHeadX() - getX();
         double deltaY = snakeHead.getSnakeHeadY() - getY();
         double distance = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
