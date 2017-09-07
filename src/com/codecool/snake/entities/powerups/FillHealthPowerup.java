@@ -25,9 +25,7 @@ public class FillHealthPowerup extends GameEntity implements Interactable {
     @Override
     public void apply(SnakeHead snakeHead) {
         if (snakeHead.getHealth() < 100) {
-            //System.out.println(snakeHead.getHealth());
             snakeHead.setHealth(10);
-            //System.out.println(snakeHead.getHealth());
             destroy();
         }
     }
