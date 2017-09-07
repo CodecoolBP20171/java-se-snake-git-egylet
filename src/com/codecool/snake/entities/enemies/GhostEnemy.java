@@ -1,6 +1,7 @@
 package com.codecool.snake.entities.enemies;
 
 import com.codecool.snake.Globals;
+import com.codecool.snake.Main;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
@@ -47,7 +48,9 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
     }
 
     @Override
-    public void apply(Laser lase) {
+    public void apply(Laser laser) {
+        Globals.score += 15;
+        Main.scoreHUD.setText("Score: " + Globals.score);
         destroy();
     }
 
@@ -64,7 +67,7 @@ public class GhostEnemy extends GameEntity implements Animatable, Interactable {
     public Point2D setNewHeading(){
         int speed = 1;
         double direction = rnd.nextDouble() * 360;
-        System.out.println("Simple: " + direction);
+        System.out.println("Ghost: " + direction);
         setRotate(direction);
         heading = Utils.directionToVector(direction, speed);
         System.out.println(heading);
