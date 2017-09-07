@@ -10,22 +10,18 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
-import java.util.Random;
 
 public class FasterEnemy extends GameEntity implements Animatable, Interactable {
     private Point2D heading;
     private static final int damage = 10;
-    private Random rnd = new Random();
 
-    public FasterEnemy(Pane pane) {
+    public FasterEnemy(Pane pane, SnakeHead player) {
         super(pane);
 
         setImage(Globals.fastEnemy);
         pane.getChildren().add(this);
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
-        setNewHeading();
-
+        setEnemy(player);
+        this.setNewHeading();
     }
 
     @Override
