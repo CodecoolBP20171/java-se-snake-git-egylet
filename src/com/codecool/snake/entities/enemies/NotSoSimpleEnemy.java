@@ -9,43 +9,53 @@ import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
 
-public class SimpleEnemy extends GameEntity implements Animatable, Interactable {
+
+public class NotSoSimpleEnemy extends GameEntity implements Animatable, Interactable {
 
     private static final int damage = 10;
+    private SnakeHead snakeHead;
 
-    public SimpleEnemy(Pane pane, SnakeHead player) {
+    public NotSoSimpleEnemy(Pane pane, SnakeHead snakeHead) {
         super(pane);
+        this.snakeHead = snakeHead;
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
-        setEnemy(player);
+        setEnemy(snakeHead);
         setCoordinate();
-        setNewHeading();
     }
 
     @Override
     public void step() {
-        if (isOutOfBounds()) {
-            setNewHeading();
-        }
-        setX(getX() + heading.getX());
-        setY(getY() + heading.getY());
+        followTheSnakeHead();
     }
 
+    @Override
     public void apply(SnakeHead player) {
         player.changeHealth(-damage);
         setCoordinate();
     }
 
-
     @Override
     public void apply(Laser laser) {
-        Globals.score += 10;
+        Globals.score += 20;
         Main.scoreHUD.setText("Score: " + Globals.score);
         setCoordinate();
     }
 
     @Override
-    public double getDir(){
+    public double getDir() {
         return 0;
     }
+
+    public void followTheSnakeHead(){
+        double speed = 0.008;
+        double deltaX = snakeHead.getSnakeHeadX() - getX();
+        double deltaY = snakeHead.getSnakeHeadY() - getY();
+        double distance = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
+        if (distance <= 200) {
+            setX(getX() + (deltaX * speed));
+            setY(getY() + (deltaY * speed));
+        }
+    }
 }
+

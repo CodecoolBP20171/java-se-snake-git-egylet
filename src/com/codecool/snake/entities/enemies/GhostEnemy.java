@@ -1,21 +1,21 @@
 package com.codecool.snake.entities.enemies;
 
-import com.codecool.snake.Main;
-import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.laser.Laser;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.layout.Pane;
 
-public class SimpleEnemy extends GameEntity implements Animatable, Interactable {
+public class GhostEnemy extends GameEntity implements Animatable, Interactable {
 
     private static final int damage = 10;
 
-    public SimpleEnemy(Pane pane, SnakeHead player) {
+    public GhostEnemy(Pane pane, SnakeHead player) {
         super(pane);
-        setImage(Globals.simpleEnemy);
+        setImage(Globals.ghostEnemy);
         pane.getChildren().add(this);
         setEnemy(player);
         setCoordinate();
@@ -25,27 +25,29 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
     @Override
     public void step() {
         if (isOutOfBounds()) {
+            setX(getX()-getX());
+            setY(getY()-getY());
             setNewHeading();
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
     }
 
+    @Override
     public void apply(SnakeHead player) {
         player.changeHealth(-damage);
         setCoordinate();
     }
 
-
     @Override
     public void apply(Laser laser) {
-        Globals.score += 10;
+        Globals.score += 15;
         Main.scoreHUD.setText("Score: " + Globals.score);
         setCoordinate();
     }
 
     @Override
-    public double getDir(){
+    public double getDir() {
         return 0;
     }
 }
